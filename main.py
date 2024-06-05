@@ -21,9 +21,13 @@ if os.path.exists(".passwords") == False:
 session = ""
 
 while session == "":
+    if 'checkuser' in locals():
+        olduser = checkuser
     checkuser = input("Enter username: ")
     if os.path.exists(os.path.join(".passwords", checkuser)) == False:
         print("User not found, please try again!")
+        if olduser == checkuser:
+            print("TIP: You can set up a new user from an already authorized account!")
     else:
         checkpw = input("Enter password: ")
         checkpw = checkpw.encode("utf8")
