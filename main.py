@@ -6,6 +6,7 @@ if os.path.exists(".passwords") == False:
     password_manager.init_pwsystem()
 
 session = ""
+olduser = ""
 
 while session == "":
     if 'checkuser' in locals():
