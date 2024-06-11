@@ -45,6 +45,9 @@ while session == "":
             print("Invalid Password! Try again...")
 print(f"Welcome, {session}")
 
+if os.path.exists(os.path.join("library", session)) == False:
+    print("Music library not found, would you like to create it?")
+
 while True:
     # menu
     print("Welcome to Leo\'s song quiz")
