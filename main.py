@@ -42,7 +42,7 @@ if os.path.exists(os.path.join("library", session)) == False:
 while True:
     # menu
     print("Welcome to Leo\'s song quiz")
-    print("1. Play quiz \n2. Add a new user \n3.Add song \n4. Exit")
+    print("1. Play quiz \n2. Add a new user \n 3.Add song \n4. Exit")
     try:
         choice = input(">>> ")
     except:

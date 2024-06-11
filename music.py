@@ -6,15 +6,16 @@ def createLibrary(user):
     print("Creating music library, type \"STOP\" to exit")
     track = ""
     artist = ""
-    lib = open(os.path.join("music", user), "a")
     while track != "STOP" and artist != "STOP":
+        lib = open(os.path.join("music", user), "a")
         track = input("Enter song name: ")
         artist = input("Enter song artist: ")
         if track == "STOP" or artist == "STOP":
             break
         else:
             lib.write(f"{track}-{artist}")
-    lib.close()
+            lib.close()
+            
     print("Music library created at", os.path.join("music", user))
 
 def addSong(name, artist, username):
