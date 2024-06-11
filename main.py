@@ -1,5 +1,5 @@
 import os, hashlib, sys
-import password_manager, music
+import password_manager, music, game
 
 if os.path.exists(".passwords") == False:
     print("Passwords not found, creating login system now!")
@@ -50,7 +50,8 @@ while True:
     finally:
         match choice:
             case 1:
-                print("playing quiz")
+                print("Entering song quiz!")
+                game.play(session)
             case 2:
                 un = input("Enter username for new user: ")
                 pw = input("Enter password: ")

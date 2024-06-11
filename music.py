@@ -9,8 +9,10 @@ def createLibrary(user):
     while track != "STOP" and artist != "STOP":
         lib = open(os.path.join("music", user), "a")
         track = input("Enter song name: ")
+        if track == "STOP":
+            break
         artist = input("Enter song artist: ")
-        if track == "STOP" or artist == "STOP":
+        if artist == "STOP":
             break
         else:
             lib.write(f"{track}-{artist}\n")
