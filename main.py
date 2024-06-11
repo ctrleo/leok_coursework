@@ -2,6 +2,7 @@ import os, hashlib, sys
 import password_manager, music
 
 if os.path.exists(".passwords") == False:
+    print("Passwords not found, creating login system now!")
     password_manager.init_pwsystem()
 
 session = ""

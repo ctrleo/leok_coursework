@@ -2,11 +2,11 @@ import os, re, hashlib
 specials = re.compile("[@_!#$%^&*()<>?/\|}{~:]")
 def init_pwsystem():
     os.mkdir(".passwords")
-    user = input("Enter username: ")
+    user = input("Enter new username: ")
     while specials.search(user) != None:
         print("Username cannot contain special characters!")
-        user = input("Enter username: ")
-    pw = input("Enter a new password: ")
+        user = input("Enter new username: ")
+    pw = input("Enter new password: ")
     utfpw = pw.encode("utf8")
     hashpw = hashlib.sha256(utfpw)
     password = hashpw.hexdigest()
