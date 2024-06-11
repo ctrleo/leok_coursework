@@ -44,7 +44,7 @@ while True:
     print("Welcome to Leo\'s song quiz")
     print("1. Play quiz \n2. Add a new user \n3. Add song \n4. Exit")
     try:
-        choice = input(">>> ")
+        choice = int(input(">>> "))
     except:
         print("Error! Choice must be a number!")
 
