@@ -1,4 +1,4 @@
-import os, hashlib
+import os, hashlib, sys
 import password_manager, music
 
 if os.path.exists(".passwords") == False:
@@ -29,6 +29,7 @@ while session == "":
             session = checkuser
         else:
             print("Invalid Password! Try again...")
+pwfile.close()
 print(f"Welcome, {session}")
 
 if os.path.exists(os.path.join("library", session)) == False:
@@ -40,5 +41,25 @@ if os.path.exists(os.path.join("library", session)) == False:
 while True:
     # menu
     print("Welcome to Leo\'s song quiz")
-    print("1. Play quiz \n2. Add a new user \n3.Add songs \n4. Exit")
-    choice = input(">>> ")
+    print("1. Play quiz \n2. Add a new user \n3.Add song \n4. Exit")
+    try:
+        choice = input(">>> ")
+    except:
+        print("Error! Choice must be a number!")
+    finally:
+        match choice:
+            case 1:
+                print("playing quiz")
+            case 2:
+                un = input("Enter username for new user: ")
+                pw = input("Enter password: ")
+                password_manager.newuser(un, pw)
+                print("Successfully added user")
+            case 3:
+                sn = input("Enter song name: ")
+                sa = input("Enter song artist: ")
+                music.addSong(sn, sa, session)
+                print("Successfully added song")
+            case 4:
+                print("Logging out!")
+                sys.exit()
