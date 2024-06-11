@@ -22,7 +22,11 @@ session = ""
 
 while session == "":
     if 'checkuser' in locals():
-        olduser = checkuser
+        try:
+            olduser = checkuser
+        except:
+            # cry
+            olduser = ""
     checkuser = input("Enter username: ")
     if os.path.exists(os.path.join(".passwords", checkuser)) == False:
         print("User not found, please try again!")
@@ -39,5 +43,10 @@ while session == "":
             session = checkuser
         else:
             print("Invalid Password! Try again...")
+print(f"Welcome, {session}")
 
-print(f"User is {session}")
+while True:
+    # menu
+    print("Welcome to Leo\'s song quiz")
+    print("1. Play quiz \n2. Add a new user \n3.Add songs \n4. Exit")
+    choice = input(">>> ")
