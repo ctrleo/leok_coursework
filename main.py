@@ -1,5 +1,5 @@
-import os, re, hashlib
-import password_manager
+import os, hashlib
+import password_manager, music
 
 if os.path.exists(".passwords") == False:
     password_manager.init_pwsystem()
@@ -33,6 +33,9 @@ print(f"Welcome, {session}")
 
 if os.path.exists(os.path.join("library", session)) == False:
     print("Music library not found, would you like to create it?")
+    choice = input("y or n?")
+    if choice == "y":
+        music.createLibrary(session)
 
 while True:
     # menu
