@@ -13,9 +13,9 @@ def createLibrary(user):
         if track == "STOP" or artist == "STOP":
             break
         else:
-            lib.write(f"{track}-{artist}")
+            lib.write(f"{track}-{artist}\n")
             lib.close()
-            
+
     print("Music library created at", os.path.join("music", user))
 
 def addSong(name, artist, username):
@@ -23,6 +23,6 @@ def addSong(name, artist, username):
         createLibrary(username)
     else:
         musicLibrary = open(os.path.join("music", username), "a")
-        musicLibrary.write(f"{name}-{artist}")
+        musicLibrary.write(f"{name}-{artist}\n")
     print("Song added successfully")
     musicLibrary.close()
