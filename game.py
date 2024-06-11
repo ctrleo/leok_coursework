@@ -35,7 +35,7 @@ def play(session):
         if guess == song:
             print("First Time!")
             return 1
-        if guess != song and guess == artist_name:
+        if guess != song or guess == artist_name:
             print("Artist name correct! revealing more characters...")
             charactersindex = []
             for i in range(math.floor(len(song) * 0.25)):
