@@ -12,7 +12,7 @@ def play(session):
             split = line.split("-")
             names.append(split[0])
             artists.append(split[1])
-        index = random.randint(0, len(names))
+        index = random.randint(0, len(names) - 1)
         song = names[index]
         artist_name = artists[index]
         print("Selecting song...")
@@ -39,7 +39,7 @@ def play(session):
             print("Artist name correct! revealing more characters...")
             charactersindex = []
             for i in range(math.floor(len(song) * 0.25)):
-                randindex = random.randint(1, len(song))
+                randindex = random.randint(1, len(song) - 1)
                 charactersindex.append(song[randindex])
             for i in song:
                 if i == song[0]:
