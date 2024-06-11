@@ -1,22 +1,8 @@
 import os, re, hashlib
+import password_manager
 
 if os.path.exists(".passwords") == False:
-    print("Passwords not found! Creating now")
-    os.mkdir(".passwords")
-    user = input("Enter username: ")
-    specials = re.compile("[@_!#$%^&*()<>?/\|}{~:]")
-    while specials.search(user) != None:
-        print("Username cannot contain special characters!")
-        user = input("Enter username: ")
-    pw = input("Enter a new password: ")
-    utfpw = pw.encode("utf8")
-    hashpw = hashlib.sha256(utfpw)
-    password = hashpw.hexdigest()
-
-    profile = open(os.path.join(".passwords", user), "w")
-    profile.write(password)
-    profile.close()
-    print("User created successfully!")
+    password_manager.init_pwsystem()
 
 session = ""
 
