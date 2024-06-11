@@ -33,7 +33,7 @@ while session == "":
 pwfile.close()
 print(f"Welcome, {session}")
 
-if os.path.exists(os.path.join("library", session)) == False:
+if os.path.exists(os.path.join("music", session)) == False:
     print("Music library not found, would you like to create it?")
     choice = input("y or n? ")
     if choice == "y":
@@ -47,21 +47,21 @@ while True:
         choice = input(">>> ")
     except:
         print("Error! Choice must be a number!")
-    finally:
-        match choice:
-            case 1:
-                print("Entering song quiz!")
-                game.play(session)
-            case 2:
-                un = input("Enter username for new user: ")
-                pw = input("Enter password: ")
-                password_manager.newuser(un, pw)
-                print("Successfully added user")
-            case 3:
-                sn = input("Enter song name: ")
-                sa = input("Enter song artist: ")
-                music.addSong(sn, sa, session)
-                print("Successfully added song")
-            case 4:
-                print("Logging out!")
-                sys.exit()
+
+    match choice:
+        case 1:
+            print("Entering song quiz!")
+            game.play(session)
+        case 2:
+            un = input("Enter username for new user: ")
+            pw = input("Enter password: ")
+            password_manager.newuser(un, pw)
+            print("Successfully added user")
+        case 3:
+            sn = input("Enter song name: ")
+            sa = input("Enter song artist: ")
+            music.addSong(sn, sa, session)
+            print("Successfully added song")
+        case 4:
+            print("Logging out!")
+            sys.exit()
