@@ -1,4 +1,4 @@
-import os, hashlib, sys
+import os, hashlib, sys, time
 import password_manager, music, game
 
 if os.path.exists(".passwords") == False:
@@ -43,7 +43,7 @@ if os.path.exists(os.path.join("music", session)) == False:
 while True:
     # menu
     print("Welcome to Leo\'s song quiz")
-    print("1. Play quiz \n2. Add a new user \n3. Add song \n4. Exit")
+    print("1. Play quiz \n2. Add a new user \n3. Add song \n4. Check user points\n5. Exit")
     try:
         choice = int(input(">>> "))
     except:
@@ -64,5 +64,22 @@ while True:
             music.addSong(sn, sa, session)
             print("Successfully added song")
         case 4:
-            print("Logging out!")
+            if os.path.exists(os.path.join(".scores", session)):
+                print(f"{session} has {game.getPoints(session)} points!")
+                sys.exit()
+            else:
+                print("Scores not found! Try playing a game first...")
+        case 5:
+            print("Come back soon!")
             sys.exit()
+        case _:
+            print("ERROR 404: OPTION NOT FOUND")
+            print("ERROR 262: DISCONNECTED FROM OPTION PIPE")
+            secret = input("press enter to reconnect to MAIN.PY...")
+            reconnect = password_manager.socketmanager(404, 262, secret)
+            if reconnect == True:
+                print("Reconnecting...")
+                time.sleep(1)
+            if reconnect == False:
+                print("Repairing connection...")
+                password_manager.reconnect_pipe()

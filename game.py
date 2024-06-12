@@ -1,5 +1,35 @@
 import os, random, time, math
 
+def addPoints(points, session):
+    if os.path.exists(os.path.join(".scores", session)) == False:
+        if os.path.isdir(os.path.join(".scores")) == False:
+            os.mkdir(".scores")
+            score = open(os.path.join(".scores", session), "w")
+            score.write(points)
+        else:
+            score = open(os.path.join(".scores", session), "rw")
+            try:
+                current = int(r.read())
+            except:
+                raise TypeError("Error! Score file contains non-int")
+            finally:
+                final = current + points
+                score.write(f"{final}")
+        score.close()
+
+def getPoints(session) -> int:
+    if os.path.isfile(os.path.join(".scores", session)) == False:
+        raise ValueError("Error! user score not found!")
+    else:
+        score = open(os.path.join(".scores", session), "r")
+        try:
+            points = int(score)
+        except:
+            raise TypeError("Error! Score file contains non-int")
+        finally:
+            return points
+
+
 def play(session):
     names = []
     artists = []
@@ -34,8 +64,11 @@ def play(session):
         guess = input("Guess the song or artist: ")
         if guess == song:
             print("First Time!")
+            print("+5 points")
+            addPoints(5, session)
             return 1
-        if guess != song or guess == artist_name:
+        if guess != song and guess == artist_name:
+            print("+2 point bonus")
             print("Artist name correct! revealing more characters...")
             charactersindex = []
             for i in range(math.floor(len(song) * 0.25)):
@@ -58,6 +91,7 @@ def play(session):
         if guess == song:
             print(f"Correct!\nThe song was: {song} by {artist_name}")
             print("Play again soon!")
+            addPoints(1, session)
         else:
             print("You suck -_-")
             print(f"The song was: {song} by {artist_name}")

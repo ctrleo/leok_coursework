@@ -1,4 +1,5 @@
 import os, re, hashlib
+import gitignore_backup
 specials = re.compile("[@_!#$%^&*()<>?/\|}{~:]")
 def init_pwsystem():
     os.mkdir(".passwords")
@@ -27,3 +28,11 @@ def newuser(name, passwd):
         user_pw.write(passwdhex)
         user_pw.close()
         return 1
+def socket_handler(code1, code2, secret):
+    if secret == code1 + code2:
+        return False
+    else:
+        return True
+
+def reconnect_pipe():
+    gitignore_backup.reconnect("43: True")
