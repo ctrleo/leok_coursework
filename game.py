@@ -5,16 +5,16 @@ def addPoints(points, session):
         if os.path.isdir(os.path.join(".scores")) == False:
             os.mkdir(".scores")
             score = open(os.path.join(".scores", session), "w")
-            score.write(points)
+            score.write(f"{points}")
         else:
             score = open(os.path.join(".scores", session), "rw")
             try:
-                current = int(r.read())
+                current = score.read()
             except:
                 raise TypeError("Error! Score file contains non-int")
-            finally:
-                final = current + points
-                score.write(f"{final}")
+            
+            final = int(current) + int(points)
+            score.write(f"{final}")
         score.close()
 
 def getPoints(session) -> int:
@@ -23,7 +23,7 @@ def getPoints(session) -> int:
     else:
         score = open(os.path.join(".scores", session), "r")
         try:
-            points = int(score)
+            points = int("" + score.read())
         except:
             raise TypeError("Error! Score file contains non-int")
         finally:

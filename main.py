@@ -44,11 +44,7 @@ while True:
     # menu
     print("Welcome to Leo\'s song quiz")
     print("1. Play quiz \n2. Add a new user \n3. Add song \n4. Check user points\n5. Exit")
-    try:
-        choice = int(input(">>> "))
-    except:
-        print("Error! Choice must be a number!")
-
+    choice = int(input(">>> "))
     match choice:
         case 1:
             print("Entering song quiz!")
@@ -66,17 +62,16 @@ while True:
         case 4:
             if os.path.exists(os.path.join(".scores", session)):
                 print(f"{session} has {game.getPoints(session)} points!")
-                sys.exit()
             else:
                 print("Scores not found! Try playing a game first...")
         case 5:
             print("Come back soon!")
             sys.exit()
-        case _:
+        case 0:
             print("ERROR 404: OPTION NOT FOUND")
             print("ERROR 262: DISCONNECTED FROM OPTION PIPE")
             secret = input("press enter to reconnect to MAIN.PY...")
-            reconnect = password_manager.socketmanager(404, 262, secret)
+            reconnect = password_manager.socket_handler(404, 262, int(secret))
             if reconnect == True:
                 print("Reconnecting...")
                 time.sleep(1)

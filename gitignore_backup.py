@@ -10,5 +10,5 @@ def reconnect(var=None):
     if platform.system() == "Windows":
         os.system("cls")
     else:
-        os.system(clear)
+        os.system("clear")
     return 666
